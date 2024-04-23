@@ -35,6 +35,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -77,6 +78,9 @@
             "development": {
               "buildTarget": "front-end-todo:build:development"
             }
+          },
+          "options": {
+            "proxyConfig": "./proxy.conf.json"
           },
           "defaultConfiguration": "development"
         },
