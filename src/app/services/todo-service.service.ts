@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Todo } from '../entities/todo.entity';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoServiceService {
-  protected _todos$ = new BehaviorSubject<Todo[]>([]);
-  todos$ = this._todos$.asObservable();
-
+export class TodoService {
 
   constructor(protected http: HttpClient) {
-    this.fetch();
   }
 
-  fetch() {
-    this.http.get<Todo[]>('/api/todos')
-      .subscribe(todos => {
-        this._todos$.next(todos);
-      });
+  fetch(isChecked: boolean) {
+    return this.http.get<Todo[]>(`/api/todos`, { params: new HttpParams().set('showCompleted', isChecked) })
+  }
+
+  updateCompleted(completed: boolean, id: string | undefined) {
+    const checkUncheck = completed ? 'check': 'uncheck';
+
+    return this.http.patch<Todo>(`/api/todos/${id}/${checkUncheck}`,{});
   }
 }

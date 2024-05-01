@@ -1,16 +1,21 @@
-<div>
-    <div>
-        <input placeholder="completati" type="checkbox">
-        <label for="showCompleted">Show completed</label>
-
-        <button>Aggiungi</button>
+<div class="main-container">
+    <div class="float">
+        <div class="left">
+            <input placeholder="completati" type="checkbox" (change)="getCompleted($event)">
+            <label for="showCompleted">Show completed</label>
+        </div>
+        <div class="right"><button>Aggiungi</button></div>
     </div>
 
-    <div>
+    <div class="center">
         <h1>TODO</h1>
     </div>
 
     <div *ngFor="let todo of todos$ | async">
-        <app-single-todo></app-single-todo>
+        <app-single-todo
+        [todo]="todo"
+        (onTodoChange)="setCompleted($event, todo)"
+            ></app-single-todo>
     </div>
+        
 </div>

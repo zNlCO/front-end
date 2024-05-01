@@ -1,5 +1,5 @@
-<div>
-    <h2>Titolo TODO</h2>
-    <h2>Data</h2>
-    <input placeholder="completato" type="checkbox">
+<div class="single-container" *ngIf="todo">
+    <h2>{{ todo.title }}</h2>
+    <h2>{{ todo.dueDate }}</h2>
+    <input placeholder="completato" type="checkbox" [checked]="isCheck" (change)="setCompleted()">
 </div>

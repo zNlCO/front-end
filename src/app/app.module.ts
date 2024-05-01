@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './pages/todo/todo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SingleTodoComponent } from './components/single-todo/single-todo.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SingleTodoComponent } from './components/single-todo/single-todo.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
