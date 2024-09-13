@@ -7,14 +7,20 @@ import { TodoComponent } from './pages/todo/todo.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SingleTodoComponent } from './components/single-todo/single-todo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddModalComponent } from './components/add-modal/add-modal.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
-    SingleTodoComponent
+    SingleTodoComponent,
+    AddModalComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

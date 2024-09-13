@@ -1,0 +1,69 @@
+<!-- Nel typescript questo ng-template vine definito come istanza del NgbModal per poi usare i suoi metodi nel HTML tramite il parametro let-modal (modal.dismiss() o modal.close()) -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Aggiungi TO-DO</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <form [formGroup]="addTodoForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+                
+                <div class="mb-4">
+                    <label for="title">Titolo</label>
+                    <div class="input-group">
+                        <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Titolo"
+                        formControlName="title"
+                        [class.is-invalid]="addTodoForm.get('title')?.invalid
+                        && (addTodoForm.get('title')?.dirty 
+                        || addTodoForm.get('title')?.touched 
+                        || isSubmitted)">
+
+                        <div class="invalid-tooltip">{{ addTodoForm.get('title')?.invalid ? "Title is missing" : undefined }}</div>
+
+                    </div>
+                    
+                </div>
+                <div class="mb-4">
+                    <label for="dateOfBirth">Data di Scadenza</label>
+                    <div class="input-group">
+                        <input
+                            id="dateOfBirth"
+                            class="form-control"
+                            placeholder="yyyy-mm-dd"
+                            name="dp"
+                            ngbDatepicker
+                            #dp="ngbDatepicker"
+                            formControlName="dueDate"
+                            [class.is-invalid]="addTodoForm.get('dueDate')?.invalid
+                            && (addTodoForm.get('dueDate')?.dirty
+                            || addTodoForm.get('dueDate')?.touched)"
+                        />
+                        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
+                        <div class="invalid-tooltip">{{ addTodoForm.get('dueDate')?.invalid ? "Date is invalid" : undefined }}</div>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div ngbDropdown class="d-inline-block">
+                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                            Utente
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem type="button">Action - 1</button>
+                            <button ngbDropdownItem type="button">Another Action</button>
+                            <button ngbDropdownItem type="button">Something else is here</button>
+                        </div>
+                    </div>
+                </div>
+                
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-outline-secondary">Save</button>
+        </div>
+    </form>
+</ng-template>
+
+<!-- La variabile content è la template variable di ng-template-->
+<button class="btn btn-primary btn-lg" (click)="open(content)">Aggiungi</button>

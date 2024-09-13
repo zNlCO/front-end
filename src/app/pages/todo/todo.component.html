@@ -1,21 +1,26 @@
-<div class="main-container">
-    <div class="float">
-        <div class="left">
-            <input placeholder="completati" type="checkbox" (change)="getCompleted($event)">
-            <label for="showCompleted">Show completed</label>
+
+
+<div class="main-container mb-3">
+    <div class="row">
+        <div class="col">
+            <input class="form-check-input" placeholder="completati" type="checkbox" [(ngModel)]="showCompleted" (change)="showCompletedChange()" >
+            <label class="form-check-label" for="showCompleted">Mostra completati</label>
         </div>
-        <div class="right"><button>Aggiungi</button></div>
+        <div class="col text-end">
+            <app-add-modal></app-add-modal>
+        </div>
+        
     </div>
 
-    <div class="center">
-        <h1>TODO</h1>
+    <div class="mb-5">
+        <h1 class="text-center">TODO</h1>
     </div>
 
     <div *ngFor="let todo of todos$ | async">
         <app-single-todo
-        [todo]="todo"
-        (onTodoChange)="setCompleted($event, todo)"
-            ></app-single-todo>
+            [todo]="todo"
+            (onTodoChange)="setCompleted($event, todo)"
+        ></app-single-todo>
     </div>
         
 </div>

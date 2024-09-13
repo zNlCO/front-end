@@ -1,5 +1,5 @@
 <div class="single-container" *ngIf="todo">
     <h2>{{ todo.title }}</h2>
-    <h2>{{ todo.dueDate }}</h2>
+    <h2>{{ todo.dueDate | date }}</h2>
     <input placeholder="completato" type="checkbox" [checked]="isCheck" (change)="setCompleted()">
 </div>
