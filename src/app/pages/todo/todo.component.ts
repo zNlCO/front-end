@@ -29,7 +29,6 @@ export class TodoComponent {
   }
 
   setCompleted(comp: boolean, todo: Todo) {
-    console.log(todo.id); 
     this.todoSrv.updateCompleted(comp, todo.id);
     this.showCompleted$.next(this.showCompleted);
   }

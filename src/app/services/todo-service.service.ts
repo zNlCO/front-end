@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Todo } from '../entities/todo.entity';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,17 @@ export class TodoService {
   //per avere la lista aggiornata all'esterno del service senza possibilità di aggiornarla
   todos$ = this._todos$.asObservable();
 
-  constructor(protected http: HttpClient) {
-  }
+  constructor(protected http: HttpClient,
+    private authSrv: AuthService) {
+      this.authSrv.currentUser$
+      .subscribe(user => {
+        if (user) {
+          this.fetch(false);
+        } else {
+          this._todos$.next([]);
+        }
+      })
+    }
 
   fetch(isChecked: boolean) {
     this.http.get<Todo[]>(`/api/todos`, { params: new HttpParams().set('showCompleted', isChecked) })
