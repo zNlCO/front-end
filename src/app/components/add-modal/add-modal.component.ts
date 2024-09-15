@@ -1,7 +1,8 @@
-import { Component, isStandalone, TemplateRef } from '@angular/core';
+import { Component, Input, isStandalone, TemplateRef } from '@angular/core';
 import { NgbDate, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TodoService } from '../../services/todo-service.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthService, User } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-modal',
@@ -10,18 +11,25 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 })
 export class AddModalComponent {
 
+	@Input()
+	users: User[] | null = null;
+	user$ = this.authSrv.currentUser$;
+
 	addTodoForm = this.fb.group({
 		title: ['', Validators.required],
 		dueDate: [null],
+		userId: ['', Validators.required],
 	});
 	isSubmitted = false;
 
 	constructor(
 		protected modalService: NgbModal,
 		protected todoService: TodoService,
+		private authSrv: AuthService,
 		protected fb: FormBuilder) { }
 
 	ngOnInit(): void {
+		this.authSrv.fetchUsers();
 	}
 
   	//open apre il model
@@ -33,13 +41,13 @@ export class AddModalComponent {
 
 	onSubmit() {
 		this.isSubmitted = true;
-
 		if (this.addTodoForm.valid) {
 			this.modalService.dismissAll();
 			
 			const dueDate = this.convertToDate(this.addTodoForm.get('dueDate')?.value ?? null);
 			const title = this.addTodoForm.get('title')?.value ?? '';
-			this.todoService.add(title, dueDate);
+			const userId = this.addTodoForm.get('userId')?.value ?? '';
+			this.todoService.add(title, dueDate, userId);
 
 		}
 		

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { BehaviorSubject, map, tap } from "rxjs"
+import { BehaviorSubject, catchError, map, of, tap } from "rxjs"
 import { JwtService } from "./jwt.service";
 
 export interface User {
@@ -17,8 +17,10 @@ export interface User {
 })
 export class AuthService {
   private _currentUser$ = new BehaviorSubject<User | null>(null);
-
   currentUser$ = this._currentUser$.asObservable();
+
+  private _users$ = new BehaviorSubject<User[] | null>(null);
+  users$ = this._users$.asObservable();
 
   constructor(private jwtSrv: JwtService,
               private http: HttpClient,
@@ -39,6 +41,10 @@ export class AuthService {
       );
   }
 
+  register(firstName: string, lastName: string, picture: string, username: string, password: string) {
+    return this.http.post<User>('/api/register', {firstName, lastName, picture, username, password});
+  }
+
   logout() {
     this.jwtSrv.removeToken();
     this._currentUser$.next(null);
@@ -48,5 +54,10 @@ export class AuthService {
   private fetchUser() {
     this.http.get<User>('/api/users/me')
       .subscribe(user => this._currentUser$.next(user));
+  }
+
+  fetchUsers() {
+    this.http.get<User[]>('/api/users/fetch')
+      .subscribe(users => this._users$.next(users));
   }
 }

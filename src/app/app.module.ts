@@ -13,6 +13,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
 import { LoginComponent } from './pages/login/login.component';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { RegisterModalComponent } from './components/register-modal/register-modal.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NavUserComponent } from './components/nav-user/nav-user.component';
     AddModalComponent,
     LoginComponent,
     IfAuthenticatedDirective,
-    NavUserComponent
+    NavUserComponent,
+    RegisterModalComponent
   ],
   imports: [
     FormsModule,

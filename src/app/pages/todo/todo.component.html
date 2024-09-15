@@ -7,7 +7,7 @@
             <label class="form-check-label" for="showCompleted">Mostra completati</label>
         </div>
         <div class="col text-end">
-            <app-add-modal></app-add-modal>
+            <app-add-modal [users]="users$ | async"></app-add-modal>
         </div>
         
     </div>
@@ -19,6 +19,8 @@
     <div *ngFor="let todo of todos$ | async">
         <app-single-todo
             [todo]="todo"
+            [createdByUser]="getUserById((users$ | async) ?? [], todo.createdBy)"
+            [assignToUser]="getUserById((users$ | async) ?? [], todo.assignTo)"
             (onTodoChange)="setCompleted($event, todo)"
         ></app-single-todo>
     </div>

@@ -1,0 +1,126 @@
+<!-- Modale aggiornato -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Sign Up</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+        <div class="modal-body">
+                
+            <!-- Nome -->
+            <div class="mb-4">
+                <label for="firstName">Nome</label>
+                <div class="input-group">
+                    <input
+                        id="firstName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Nome"
+                        formControlName="firstName"
+                        [class.is-invalid]="signUpForm.get('firstName')?.invalid
+                            && (signUpForm.get('firstName')?.dirty
+                            || signUpForm.get('firstName')?.touched
+                            || isSubmitted)">
+                    <div class="invalid-tooltip">
+                        {{ signUpForm.get('firstName')?.invalid ? "Nome è richiesto" : undefined }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cognome -->
+            <div class="mb-4">
+                <label for="lastName">Cognome</label>
+                <div class="input-group">
+                    <input
+                        id="lastName"
+                        type="text"
+                        class="form-control"
+                        placeholder="Cognome"
+                        formControlName="lastName"
+                        [class.is-invalid]="signUpForm.get('lastName')?.invalid
+                            && (signUpForm.get('lastName')?.dirty
+                            || signUpForm.get('lastName')?.touched
+                            || isSubmitted)">
+                    <div class="invalid-tooltip">
+                        {{ signUpForm.get('lastName')?.invalid ? "Cognome è richiesto" : undefined }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- URL dell'immagine -->
+            <div class="mb-4">
+                <label for="imageUrl">URL dell'immagine</label>
+                <div class="input-group">
+                    <input
+                        id="imageUrl"
+                        type="text"
+                        class="form-control"
+                        placeholder="URL dell'immagine"
+                        formControlName="imageUrl"
+                        [class.is-invalid]="signUpForm.get('imageUrl')?.invalid
+                            && (signUpForm.get('imageUrl')?.dirty
+                            || signUpForm.get('imageUrl')?.touched
+                            || isSubmitted)">
+                    <div class="invalid-tooltip">
+                        {{ signUpForm.get('imageUrl')?.invalid ? "URL dell'immagine è richiesto" : undefined }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Username -->
+            <div class="mb-4">
+                <label for="username">Username</label>
+                <div class="input-group">
+                    <input
+                        id="username"
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                        formControlName="username"
+                        [class.is-invalid]="signUpForm.get('username')?.invalid
+                            && (signUpForm.get('username')?.dirty
+                            || signUpForm.get('username')?.touched
+                            || isSubmitted)">
+                    <div class="invalid-tooltip">
+                        {{ signUpForm.get('username')?.invalid ? "Username è richiesto" : undefined }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-4">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <input
+                        id="password"
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        formControlName="password"
+                        [class.is-invalid]="signUpForm.get('password')?.invalid
+                            && (signUpForm.get('password')?.dirty
+                            || signUpForm.get('password')?.touched
+                            || isSubmitted)">
+                    <div class="invalid-tooltip">
+                        {{ signUpForm.get('password')?.invalid ? "Password è richiesta" : undefined }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-danger mb-3" *ngIf="registrationError">
+                {{ registrationError }}
+              </div>
+              
+        </div>
+
+        
+
+          
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+        </div>
+    </form>
+</ng-template>
+
+<!-- Pulsante per aprire il modale -->
+<button type="button" class="btn btn-secondary btn-block" (click)="openModal(content)" >Sign Up</button>

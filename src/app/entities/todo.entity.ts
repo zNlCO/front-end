@@ -2,6 +2,8 @@ export interface Todo {
     id?: string;
     title: string;
     dueDate?: Date;
-    completed: Boolean;
-    expired: Boolean;
+    completed: boolean;
+    expired: boolean;
+    createdBy: string;
+    assignTo: string;
 }

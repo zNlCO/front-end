@@ -1,5 +1,40 @@
-<div class="single-container" *ngIf="todo">
-    <h2>{{ todo.title }}</h2>
-    <h2>{{ todo.dueDate | date }}</h2>
-    <input placeholder="completato" type="checkbox" [checked]="isCheck" (change)="setCompleted()">
+<div [ngClass]="{
+  'todo-item-expired': todo?.expired,
+  'todo-item-completed': todo?.completed
+}" class="todo-item card mb-3 d-flex flex-row align-items-center position-relative" style="width: 100%;">
+  <!-- Data di scadenza in alto a sinistra -->
+  <div class="due-date position-absolute top-0 start-0 p-2" *ngIf="todo?.dueDate">
+    <strong>Data di scadenza:</strong> {{ todo?.dueDate | date:'dd MMMM yyyy' }}
+  </div>
+
+  <div class="card-body d-flex flex-row align-items-center w-100">
+    <!-- Titolo dell'attività -->
+    <div class="flex-grow-1 me-3">
+      <h2 class="card-title mb-0">{{ todo?.title }}</h2>
+    </div>
+
+    <!-- Contenitore per le informazioni del profilo -->
+    <div class="d-flex align-items-center me-3 flex-shrink-0">
+      <!-- Informazioni sull'utente creatore -->
+      <div class="d-flex flex-column align-items-center me-3">
+        <img *ngIf="createdByUser" [src]="createdByUser.picture" alt="{{ createdByUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
+        <div>
+          <strong>Created by:</strong> {{ createdByUser?.fullName }}
+        </div>
+      </div>
+
+      <!-- Informazioni sull'utente assegnato (se presente) -->
+      <div class="d-flex flex-column align-items-center" *ngIf="assignToUser">
+        <img *ngIf="assignToUser" [src]="assignToUser.picture" alt="{{ assignToUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
+        <div>
+          <strong>Assigned to:</strong> {{ assignToUser.fullName }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkbox per completare il todo -->
+    <div class="form-check flex-shrink-0">
+      <input class="form-check-input" type="checkbox" [checked]="todo?.completed" (change)="setCompleted()">
+    </div>
+  </div>
 </div>

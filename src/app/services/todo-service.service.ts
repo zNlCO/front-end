@@ -42,15 +42,16 @@ export class TodoService {
       
       if (index !== -1) {
         todos[index] = todo;
-        this._todos$.next(todos);
+        this._todos$.next([...todos]);
       }
 
     });
   }
 
-  add(title: string, dueDate: Date | null) {
+  add(title: string, dueDate: Date | null, assignTo: string) {
     const data = {
       title,
+      assignTo,
       ...(dueDate && { dueDate })
     };
 

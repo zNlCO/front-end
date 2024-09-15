@@ -46,15 +46,22 @@
                 </div>
                 
                 <div class="mb-4">
-                    <div ngbDropdown class="d-inline-block">
-                        <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                            Utente
-                        </button>
-                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                            <button ngbDropdownItem type="button">Action - 1</button>
-                            <button ngbDropdownItem type="button">Another Action</button>
-                            <button ngbDropdownItem type="button">Something else is here</button>
-                        </div>
+                    <label for="userId">Utente</label>
+                    <div class="input-group">
+                        <select
+                        class="form-select"
+                        aria-label="selectUsers"
+                        formControlName="userId"
+                        [class.is-invalid]="addTodoForm.get('userId')?.invalid
+                            && (addTodoForm.get('userId')?.dirty 
+                            || addTodoForm.get('userId')?.touched 
+                            || isSubmitted)" >
+                            <option
+                            [value]="user.id"
+                            *ngFor="let user of users;">{{ user.fullName }}
+                            </option>
+                        </select>
+                        <div class="invalid-tooltip">{{ addTodoForm.get('userId')?.invalid ? "User is missing" : undefined }}</div>
                     </div>
                 </div>
                 
