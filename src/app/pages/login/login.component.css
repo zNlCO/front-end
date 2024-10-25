@@ -1,3 +1,19 @@
-.container-login {
-    background-color: white;
+.background {
+    display: block; /* Rende il componente un blocco */
+    height: 100vh; /* Occupa l'intera altezza della viewport */
+    background-image: url('../../../assets/images/login-background.jpg'); /* Sfondo */
+    background-size: cover; /* Copri l'intero contenitore */
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat; /* Non ripetere l'immagine */
+    color: white; /* Imposta il colore del testo su bianco */
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.form-background {
+    background-color: rgba(0, 0, 128, 0.1); /* Blu scuro semitrasparente */
+    padding: 40px;
+    border-radius: 10px;
 }

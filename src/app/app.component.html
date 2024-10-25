@@ -1,7 +1,7 @@
-<nav class="navbar navbar-dark bg-primary mb-3">
-    <div class="container-fluid">
+<nav class="navbar navbar-dark bg-primary">
+    <div class="container">
         <a class="navbar-brand">TODO~Paolini</a>
-        <ul class="navbar-nav mr-2">
+        <ul class="navbar-nav ms-auto">
             <app-nav-user
                 [user]="currentUser$ | async"
                 (logout)="logout()"
@@ -12,6 +12,6 @@
         </ul>
     </div>
 </nav>
-<div class="container-fluid">
+<div>
     <router-outlet></router-outlet>
 </div>
