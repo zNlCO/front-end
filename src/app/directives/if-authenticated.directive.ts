@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class IfAuthenticatedDirective implements OnInit, OnDestroy {
   protected destroyed$ = new Subject<void>();
+  protected isVisible = false;
 
   constructor(
     private templateRef: TemplateRef<any>,
@@ -31,9 +32,13 @@ export class IfAuthenticatedDirective implements OnInit, OnDestroy {
 
   private updateView() {
     if (this.authSrv.isLoggedIn()) {
+      if (!this.isVisible) {
         this.viewContainer.createEmbeddedView(this.templateRef);
+        this.isVisible = true;
+      }
     } else {
       this.viewContainer.clear();
+      this.isVisible = false;
     }
   }
 }
