@@ -1,28 +1,72 @@
 
+<div class="main-container mb-5">
 
-<div class="main-container mb-3">
     <div class="row">
         <div class="col" >
-            <input class="form-check-input" placeholder="completati" type="checkbox" [(ngModel)]="showCompleted" (change)="showCompletedChange()" >
-            <label class="form-check-label" for="showCompleted">Mostra completati</label>
+            <h2 class="bebas-neue-regular">TODO LIST</h2>
         </div>
+
         <div class="col text-end">
             <app-add-modal [users]="users$ | async"></app-add-modal>
         </div>
-        
     </div>
 
-    <div class="mb-5">
-        <h1 class="text-center">TODO</h1>
+    <div class="legend d-flex mb-1 mt-1">
+        <div class="legend-container">
+            <div class="legend-color bg-white"></div>
+            <p class="legend-title mb-0 poppins-light">TODO</p>
+        </div>
+        <div class="legend-container">
+            <div class="legend-color bg-red"></div>
+            <p class="legend-title mb-0 poppins-light">EXPIRED</p>
+        </div>
+        <div class="legend-container">
+            <div class="legend-color bg-green"></div>
+            <p class="legend-title mb-0 poppins-light">COMPLETED</p>
+        </div>
     </div>
 
-    <div *ngFor="let todo of todos$ | async">
-        <app-single-todo
-            [todo]="todo"
-            [createdByUser]="getUserById((users$ | async) ?? [], todo.createdBy)"
-            [assignToUser]="getUserById((users$ | async) ?? [], todo.assignTo)"
-            (onTodoChange)="setCompleted($event, todo)"
-        ></app-single-todo>
+    <div>
+        <div class="mb-1">
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="showCompleted" (change)="showCompletedChange()">
+                <label class="form-check-label poppins-medium" for="showCompleted">Show Completed</label>
+            </div>
+        </div>
+
+        <div class="todo-container">
+            
+            <table class="todo-table">
+            
+            <!-- TABELLA HEADER -->
+            <thead>
+            <table class="todo-table-head"><tr>
+                <td style="width:3%"><input class="form-check-input" type="checkbox"></td>
+                <td style="width:45%">TITLE</td>
+                <td style="width:12%">DUE DATE</td>
+                <td style="width:20%">CREATED BY</td>
+                <td style="width:20%">ASSIGNED TO</td>
+            </tr></table>
+            </thead>
+
+            <tr 
+                class="todo-table-tr"
+                [ngClass]="{
+                'todo-item-expired': todo?.expired,
+                'todo-item-completed': todo?.completed}" 
+                *ngFor="let todo of todos$ | async">
+
+                <app-single-todo
+                    [todo]="todo"
+                    [createdByUser]="getUserById((users$ | async) ?? [], todo.createdBy)"
+                    [assignToUser]="getUserById((users$ | async) ?? [], todo.assignTo)"
+                    (onTodoChange)="setCompleted($event, todo)"
+                ></app-single-todo>
+
+            </tr>
+            
+        </table>
+
+        </div>
     </div>
-        
 </div>

@@ -1,45 +1,35 @@
-<div [ngClass]="{
-  'todo-item-expired': todo?.expired,
-  'todo-item-completed': todo?.completed
-}" class="todo-item card mb-3 d-flex flex-row align-items-center position-relative" style="width: 100%;">
 
-  <table class="todo-table">
-  <tr>
+<!-- Checkbox todo -->
+<td class="td-checkbox">
+  <input class="form-check-input" type="checkbox" [checked]="todo?.completed" (change)="setCompleted()">
+</td>
 
-    <!-- Checkbox todo -->
-    <td>
-      <input class="form-check-input" type="checkbox" [checked]="todo?.completed" (change)="setCompleted()">
-    </td>
+<!-- Titolo dell'attività -->
+<td class="td-title">
+  <p class="mb-0 poppins-light">{{ todo?.title }}</p>
+</td>
 
-    <!-- Titolo dell'attività -->
-    <td>
-      <p class="mb-0 poppins-light">{{ todo?.title }}</p>
-    </td>
+<!-- DueDate Todo -->
+<td class="td-dueDate">
+  <p class="mb-0 poppins-light" *ngIf="todo?.dueDate" >{{ todo?.dueDate | date:'dd/MM/yy' }}</p>
+</td>
 
-    <!-- DueDate Todo -->
-    <td>
-      <p class="mb-0 poppins-light" *ngIf="todo?.dueDate" >{{ todo?.dueDate | date:'dd/MM/yy' }}</p>
-    </td>
+<!-- Contenitore per le informazioni del profilo -->
+<td>
+  
+  <!-- Informazioni sull'utente creatore -->
+  <div class="d-flex align-items-center me-5">
+    <img *ngIf="createdByUser" [src]="createdByUser.picture" alt="{{ createdByUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
+    
+    <p class="ms-2 mb-0 poppins-light">{{ createdByUser?.fullName }} </p>
+  </div>
+</td>
 
-    <!-- Contenitore per le informazioni del profilo -->
-    <td>
-      
-      <!-- Informazioni sull'utente creatore -->
-      <div class="d-flex align-items-center me-5">
-        <img *ngIf="createdByUser" [src]="createdByUser.picture" alt="{{ createdByUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
-        
-        <p class="ms-2 mb-0 poppins-light">{{ createdByUser?.fullName }} </p>
-      </div>
-    </td>
-
-      <!-- Informazioni sull'utente assegnato (se presente) -->
-    <td>
-      <div class="d-flex align-items-center me-5" *ngIf="assignToUser">
-        <img *ngIf="assignToUser" [src]="assignToUser.picture" alt="{{ assignToUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
-        
-        <p class="ms-2 mb-0 poppins-light">{{ assignToUser?.fullName }} </p>
-      </div>
-    </td>
-  </tr>
-  </table>
-</div>
+  <!-- Informazioni sull'utente assegnato (se presente) -->
+<td>
+  <div class="d-flex align-items-center me-5" *ngIf="assignToUser">
+    <img *ngIf="assignToUser" [src]="assignToUser.picture" alt="{{ assignToUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
+    
+    <p class="ms-2 mb-0 poppins-light">{{ assignToUser?.fullName }} </p>
+  </div>
+</td>

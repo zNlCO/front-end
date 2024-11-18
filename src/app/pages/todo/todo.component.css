@@ -4,9 +4,90 @@ h1 {
 
 .main-container {
     margin: auto;
-    margin-top: 5%;
     width: 80%;
-    background-color: white;
-    border-radius: 10px;
-    padding: 40px;
+    margin-top: 3%; 
 }
+
+.todo-container {
+    margin-top: 1%;
+    border-radius: 10px;
+    overflow-x:auto;
+}
+
+
+/*LEGEND*/
+
+    .legend-container {
+        display: flex;
+        width: 33%;
+        margin: 3%;
+        padding: 1rem;
+        border: 2px solid #6c757d;
+        align-items: center; 
+    }
+
+    .legend-color {
+        width: 60px;
+        height: 60px;
+        margin-right: 2rem;
+        border: 1px solid #6c757d;  
+    }
+
+    .bg-red {
+        background-color: #eb97a0c9 !important; /* Colore di sfondo rosato per i todo scaduti */
+    }
+    
+    .bg-green {
+        background-color: #66bb6a !important; /* Colore di sfondo grigio chiaro per i todo completati */
+    }
+
+
+/*TABLE STYLES*/
+
+    /*TABLE HEAD STYLES*/
+    .todo-table-head {
+        width: 100%;
+        border-bottom: 1px solid #6c757d;
+    }
+
+
+    .todo-table-head td {
+        padding: 1rem;
+    }
+
+    .todo-table thead {
+        border: none !important;
+    }
+
+
+
+  .todo-item-expired {
+    background-color: #eb97a0c9 !important; /* Colore di sfondo rosato per i todo scaduti */
+  }
+  
+  .todo-item-completed {
+    background-color: #66bb6a !important; /* Colore di sfondo grigio chiaro per i todo completati */
+    position: relative;
+  }
+  
+  .todo-item-completed::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #6c757d; /* Colore della linea per i todo completati */
+    transform: translateY(-50%);
+  }
+  
+  .todo-table {
+    width: 100%;
+    border-collapse: separate; /* Permette di separare le celle */
+    border-spacing: 0 10px; /* Aggiunge spazio verticale tra le righe (10px) */
+  }
+
+  .todo-table-tr {
+    background-color: white;  
+    box-shadow: 0 0 0 1px #6c757d; /* Simula un bordo attorno alla riga */
+  }
