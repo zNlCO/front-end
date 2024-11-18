@@ -8,8 +8,8 @@
     <!-- Colonna destra con il form di login -->
     <div class="col m-5">
         <div class="ms-5 me-5">
-            <h2 class="poppins-medium">Login</h2>
-            <p class="poppins-light mb-5">Welcome back! Please login to your account.</p>
+            <h2 class="poppins-medium mb-2">Login</h2>
+            <p class="poppins-light mb-6">Welcome back! Please login to your account.</p>
 
             <form [formGroup]="loginForm" (ngSubmit)="login()">
                 <!-- Username input -->
@@ -44,7 +44,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <div class="text-center mb-3">
+                <div class="text-center mb-6">
                     <button type="submit" class="btn btn-primary btn-block w-100 p-3">Log In</button>
                 </div>
             </form>
