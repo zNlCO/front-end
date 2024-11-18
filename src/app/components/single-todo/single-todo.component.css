@@ -30,25 +30,25 @@
   transform: translateY(-50%);
 }
 
-.card-body {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-
-.card-title {
-  font-size: 1.5rem;
-}
-
-.due-date {
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
-  border-radius: 0.25rem;
-  font-size: 0.9rem;
-  color: #333;
-  z-index: 1;
-}
-
 .form-check-input {
   margin: 0;
+}
+
+.todo-table {
+  width: 100%;
+}
+
+.todo-table td {
+  width: 15%;
+  vertical-align: middle;
+}
+
+.todo-table td:nth-child(1) {
+  width: 3%;
+}
+.todo-table td:nth-child(2) {
+  width: 35%;
+}
+.todo-table td:nth-child(3) {
+  width: 7%;
 }
