@@ -1,15 +1,22 @@
 td {
   width: 20%;
   vertical-align: middle;
-  padding: 1rem;
+
 }
 
 .td-checkbox {
-  width: 3%;
+  width: 3% !important;
+  padding: 1rem !important;
 }
 .td-title {
-  width: 45%;
+  width: 45% !important;
 }
 .td-dueDate {
-  width: 12%;
+  width: 12% !important;
+}
+
+.img-profile {
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
 }

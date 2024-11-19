@@ -1,36 +1,33 @@
 
 <div class="main-container mb-5">
 
-    <div class="row">
-        <div class="col" >
-            <h2 class="bebas-neue-regular">TODO LIST</h2>
-        </div>
-
-        <div class="col text-end">
-            <app-add-modal [users]="users$ | async"></app-add-modal>
-        </div>
+    <div>
+        <h2 class="bebas-neue-regular">TODO LIST</h2>
     </div>
 
-    <div class="legend d-flex mb-1 mt-1">
-        <div class="legend-container">
+    <div class="legend d-flex mb-2">
+        <div class="legend-container d-flex">
             <div class="legend-color bg-white"></div>
             <p class="legend-title mb-0 poppins-light">TODO</p>
         </div>
-        <div class="legend-container">
+        <div class="legend-container d-flex">
             <div class="legend-color bg-red"></div>
             <p class="legend-title mb-0 poppins-light">EXPIRED</p>
         </div>
-        <div class="legend-container">
+        <div class="legend-container d-flex">
             <div class="legend-color bg-green"></div>
             <p class="legend-title mb-0 poppins-light">COMPLETED</p>
         </div>
     </div>
 
     <div>
-        <div class="mb-1">
-            <div class="form-check form-switch">
+        <div class="row align-items-center ">
+            <div class="col form-check form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="showCompleted" (change)="showCompletedChange()">
                 <label class="form-check-label poppins-medium" for="showCompleted">Show Completed</label>
+            </div>
+            <div class="col text-end">
+                <app-add-modal [users]="users$ | async"></app-add-modal>
             </div>
         </div>
 
@@ -41,7 +38,7 @@
             <!-- TABELLA HEADER -->
             <thead>
             <table class="todo-table-head"><tr>
-                <td style="width:3%"><input class="form-check-input" type="checkbox"></td>
+                <td class="td-checkbox" style="width:3%"><input class="form-check-input" type="checkbox"></td>
                 <td style="width:45%">TITLE</td>
                 <td style="width:12%">DUE DATE</td>
                 <td style="width:20%">CREATED BY</td>

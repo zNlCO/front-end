@@ -1,0 +1,6 @@
+// Definisci i nuovi colori prima di importare Bootstrap
+$primary: #cf1717;    // Colore personalizzato per "primary"
+$secondary: #2ecc71;  // Colore personalizzato per "secondary"
+
+// Importa Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";

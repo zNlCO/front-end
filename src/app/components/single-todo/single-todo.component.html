@@ -19,7 +19,7 @@
   
   <!-- Informazioni sull'utente creatore -->
   <div class="d-flex align-items-center me-5">
-    <img *ngIf="createdByUser" [src]="createdByUser.picture" alt="{{ createdByUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
+    <img *ngIf="createdByUser" [src]="createdByUser.picture" alt="{{ createdByUser.fullName }}" class="img-profile mb-1" width="50" height="50">
     
     <p class="ms-2 mb-0 poppins-light">{{ createdByUser?.fullName }} </p>
   </div>
@@ -28,7 +28,7 @@
   <!-- Informazioni sull'utente assegnato (se presente) -->
 <td>
   <div class="d-flex align-items-center me-5" *ngIf="assignToUser">
-    <img *ngIf="assignToUser" [src]="assignToUser.picture" alt="{{ assignToUser.fullName }}" class="rounded-circle mb-1" width="50" height="50">
+    <img *ngIf="assignToUser" [src]="assignToUser.picture" alt="{{ assignToUser.fullName }}" class="img-profile mb-1" width="50" height="50">
     
     <p class="ms-2 mb-0 poppins-light">{{ assignToUser?.fullName }} </p>
   </div>

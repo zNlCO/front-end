@@ -18,23 +18,24 @@ h1 {
 /*LEGEND*/
 
     .legend-container {
-        display: flex;
-        width: 33%;
+        background-color: white;
+        width: 33% ;
         margin: 3%;
         padding: 1rem;
         border: 2px solid #6c757d;
+        border-radius: 5px;
         align-items: center; 
     }
 
     .legend-color {
-        width: 60px;
-        height: 60px;
+        width: 30px ;
+        height: 30px;
         margin-right: 2rem;
         border: 1px solid #6c757d;  
     }
 
     .bg-red {
-        background-color: #eb97a0c9 !important; /* Colore di sfondo rosato per i todo scaduti */
+        background-color: #e16571 !important; /* Colore di sfondo rosato per i todo scaduti */
     }
     
     .bg-green {
@@ -50,9 +51,12 @@ h1 {
         border-bottom: 1px solid #6c757d;
     }
 
-
     .todo-table-head td {
-        padding: 1rem;
+        padding: 0.2rem;
+    }
+
+    .td-checkbox {
+        padding: 1rem !important;
     }
 
     .todo-table thead {
@@ -62,11 +66,13 @@ h1 {
 
 
   .todo-item-expired {
-    background-color: #eb97a0c9 !important; /* Colore di sfondo rosato per i todo scaduti */
+    background-color: #e16571 !important; /* Colore di sfondo rosato per i todo scaduti */
+    color: white;
   }
   
   .todo-item-completed {
     background-color: #66bb6a !important; /* Colore di sfondo grigio chiaro per i todo completati */
+    color: white;
     position: relative;
   }
   
@@ -85,9 +91,14 @@ h1 {
     width: 100%;
     border-collapse: separate; /* Permette di separare le celle */
     border-spacing: 0 10px; /* Aggiunge spazio verticale tra le righe (10px) */
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    border-radius: 10px 10px 0 0;
   }
 
   .todo-table-tr {
     background-color: white;  
-    box-shadow: 0 0 0 1px #6c757d; /* Simula un bordo attorno alla riga */
+    box-shadow: 0 0 0 1px lightgray ; /* Simula un bordo attorno alla riga */
+    max-height: 80%;
   }

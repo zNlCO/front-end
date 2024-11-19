@@ -1,13 +1,13 @@
-<nav class="navbar navbar-dark bg-primary" *ifAuthenticated>
-    <div class="container">
-        <a class="navbar-brand">TODO~Paolini</a>
+<nav class="navbar navbar-light bg-white" *ifAuthenticated>
+    <div class="container align-items-center">
+        <h3><a class="bebas-neue-regular">LOGO</a></h3>
         <ul class="navbar-nav ms-auto">
             <app-nav-user
                 [user]="currentUser$ | async"
                 (logout)="logout()"
                 *ngIf="(currentUser$ | async)"></app-nav-user>
-            <li class="nav-item" *ngIf="!(currentUser$ | async)">
-                <a class="nav-link" [routerLink]="['login']">Login</a>
+            <li *ngIf="!(currentUser$ | async)">
+                <h3 class="poppins-light" [routerLink]="['login']">Login</h3>
             </li>
         </ul>
     </div>
